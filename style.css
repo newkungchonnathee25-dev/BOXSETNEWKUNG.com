@@ -1,0 +1,148 @@
+/* --- ตั้งค่าพื้นฐาน --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* พื้นหลังสายรุ้ง */
+    background: linear-gradient(-45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8);
+    background-size: 400% 400%;
+    animation: rainbowMove 10s ease infinite;
+}
+
+@keyframes rainbowMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Card หลัก --- */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+}
+
+/* --- ส่วนของ Tabs (เมนูเลือก) --- */
+.tab-header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    background: #f0f0f0;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 40px;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+    font-weight: 600;
+    color: #888;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- การแสดงผล Content --- */
+.tab-content {
+    display: none; /* ซ่อนไว้ก่อน */
+    animation: fadeEffect 0.5s;
+}
+
+.tab-content.active {
+    display: block; /* แสดงเฉพาะตัวที่ Active */
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* --- หัวข้อ --- */
+h1 {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-money { background-image: linear-gradient(90deg, #ffd700, #ff8c00); }
+.title-follow { background-image: linear-gradient(90deg, #00c6ff, #0072ff); }
+
+p { color: #666; margin-bottom: 20px; font-size: 0.9rem; }
+
+/* --- Input --- */
+.input-group { margin-bottom: 20px; }
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid #eee;
+    border-radius: 15px;
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #333;
+}
+
+/* --- ปุ่มกด --- */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+    transition: transform 0.2s;
+}
+
+button:hover { transform: scale(1.02); }
+button:active { transform: scale(0.98); }
+
+.btn-money { background: linear-gradient(90deg, #f1c40f, #e67e22); }
+.btn-follow { background: linear-gradient(90deg, #3498db, #8e44ad); }
+
+/* --- ผลลัพธ์ --- */
+.result-msg {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+.success { color: #00b894; }
+.error { color: #d63031; }
+.footer { margin-top: 20px; font-size: 0.7rem; color: #bbb; }
